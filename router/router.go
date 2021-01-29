@@ -2,12 +2,13 @@ package router
 
 import (
 	"CarNetBack/controller"
+	"CarNetBack/middleware"
 	"fmt"
 	"github.com/gin-gonic/gin"
 )
 
 func LoadRoutes(router *gin.Engine) {
-
+	router.Use(middleware.Cors())
 	//404错误
 	router.NoRoute(controller.NoRoute)
 
@@ -40,6 +41,16 @@ func LoadRoutes(router *gin.Engine) {
 			job.DELETE("/delete", controller.JobDelete)
 			job.PUT("/update", controller.JobUpdate)
 		}
+		log := v1.Group("/log")
+		{
+			log.GET("/get", controller.LogGetOne)
+			log.GET("/first", controller.LogGetFirst)
+			log.GET("/all", controller.LogGetAll)
+			log.POST("/new", controller.LogNew)
+			log.DELETE("/delete", controller.LogDelete)
+			log.PUT("/update", controller.LogUpdate)
+		}
+
 	}
 
 	//测试golang数据模型与数据库属性绑定

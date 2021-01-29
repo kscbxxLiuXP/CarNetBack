@@ -2,17 +2,10 @@ package main
 
 import (
 	"CarNetBack/config"
-	"CarNetBack/model"
 	"CarNetBack/router"
 	"CarNetBack/service"
 	"github.com/gin-gonic/gin"
 )
-
-func init() {
-
-}
-
-var address model.Address
 
 func main() {
 	r := gin.Default()
