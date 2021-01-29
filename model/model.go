@@ -57,7 +57,7 @@ type Task struct {
 }
 
 type User struct {
-	UserName string `gorm:"column:username" json:"username" form:"username"`
+	UserName string `gorm:"column:username;primary_key" json:"username" form:"username"`
 	Password string `gorm:"column:password" json:"password" form:"password"`
 }
 
@@ -72,3 +72,4 @@ type Vehicle struct {
 	ActivationTime string `gorm:"column:activationTime" json:"activationTime" form:"activationTime"`
 	TaskExecuteNum int    `gorm:"column:taskExecuteNum" json:"taskExecuteNum" form:"taskExecuteNum"`
 }
+

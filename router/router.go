@@ -41,6 +41,7 @@ func LoadRoutes(router *gin.Engine) {
 			job.DELETE("/delete", controller.JobDelete)
 			job.PUT("/update", controller.JobUpdate)
 		}
+
 		log := v1.Group("/log")
 		{
 			log.GET("/get", controller.LogGetOne)
@@ -49,6 +50,66 @@ func LoadRoutes(router *gin.Engine) {
 			log.POST("/new", controller.LogNew)
 			log.DELETE("/delete", controller.LogDelete)
 			log.PUT("/update", controller.LogUpdate)
+		}
+
+		permission := v1.Group("/permission")
+		{
+			permission.GET("/get", controller.PermissionGetOne)
+			permission.GET("/first", controller.PermissionGetFirst)
+			permission.GET("/all", controller.PermissionGetAll)
+			permission.POST("/new", controller.PermissionNew)
+			permission.DELETE("/delete", controller.PermissionDelete)
+			permission.PUT("/update", controller.PermissionUpdate)
+		}
+
+		setting := v1.Group("/setting")
+		{
+			setting.GET("/get", controller.SettingGetOne)
+			setting.GET("/first", controller.SettingGetFirst)
+			setting.GET("/all", controller.SettingGetAll)
+			setting.POST("/new", controller.SettingNew)
+			setting.DELETE("/delete", controller.SettingDelete)
+			setting.PUT("/update", controller.SettingUpdate)
+		}
+
+		staff := v1.Group("/staff")
+		{
+			staff.GET("/get", controller.StaffGetOne)
+			staff.GET("/first", controller.StaffGetFirst)
+			staff.GET("/all", controller.StaffGetAll)
+			staff.POST("/new", controller.StaffNew)
+			staff.DELETE("/delete", controller.StaffDelete)
+			staff.PUT("/update", controller.StaffUpdate)
+		}
+
+		task := v1.Group("/task")
+		{
+			task.GET("/get", controller.TaskGetOne)
+			task.GET("/first", controller.TaskGetFirst)
+			task.GET("/all", controller.TaskGetAll)
+			task.POST("/new", controller.TaskNew)
+			task.DELETE("/delete", controller.TaskDelete)
+			task.PUT("/update", controller.TaskUpdate)
+		}
+
+		user := v1.Group("/user")
+		{
+			user.GET("/get", controller.UserGetOne)
+			user.GET("/first", controller.UserGetFirst)
+			user.GET("/all", controller.UserGetAll)
+			user.POST("/new", controller.UserNew)
+			user.DELETE("/delete", controller.UserDelete)
+			user.PUT("/update", controller.UserUpdate)
+		}
+
+		vehicle := v1.Group("/vehicle")
+		{
+			vehicle.GET("/get", controller.VehicleGetOne)
+			vehicle.GET("/first", controller.VehicleGetFirst)
+			vehicle.GET("/all", controller.VehicleGetAll)
+			vehicle.POST("/new", controller.VehicleNew)
+			vehicle.DELETE("/delete", controller.VehicleDelete)
+			vehicle.PUT("/update", controller.VehicleUpdate)
 		}
 
 	}
