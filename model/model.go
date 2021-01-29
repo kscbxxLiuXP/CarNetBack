@@ -1,7 +1,5 @@
 package model
 
-import "time"
-
 type Address struct {
 	ID      int    `json:"id" form:"id"`
 	Label   string `json:"label" form:"label"`
@@ -16,17 +14,17 @@ type Job struct {
 }
 
 type Log struct {
-	ID        int       `json:"id" form:"id"`
-	VehicleID int       `gorm:"column:vehicleID" json:"vehicleID" form:"vehicleID"`
-	StaffID   int       `gorm:"column:staffID" json:"staffID" form:"staffID"`
-	Time      time.Time `json:"time" form:"time"`
+	ID        int    `json:"id" form:"id"`
+	VehicleID int    `gorm:"column:vehicleID" json:"vehicleID" form:"vehicleID"`
+	StaffID   int    `gorm:"column:staffID" json:"staffID" form:"staffID"`
+	Time      string `json:"time" form:"time"`
 }
 
 type Permission struct {
-	ID        int       `json:"id" form:"id"`
-	VehicleID int       `gorm:"column:vehicleID" json:"vehicleID" form:"vehicleID"`
-	StaffID   int       `gorm:"column:staffID" json:"staffID" form:"staffID"`
-	Time      time.Time `json:"time" form:"time"`
+	ID        int    `json:"id" form:"id"`
+	VehicleID int    `gorm:"column:vehicleID" json:"vehicleID" form:"vehicleID"`
+	StaffID   int    `gorm:"column:staffID" json:"staffID" form:"staffID"`
+	Time      string `json:"time" form:"time"`
 }
 
 type Setting struct {
@@ -46,16 +44,16 @@ type Staff struct {
 }
 
 type Task struct {
-	ID          int       `json:"id" form:"id"`
-	Name        string    `json:"name" form:"name"`
-	Description string    `json:"description" form:"description"`
-	MasterID    string    `gorm:"column:masterID" json:"masterID" form:"masterID"`
-	StartTime   time.Time `gorm:"column:startTime" json:"startTime" form:"startTime"`
-	EndTime     time.Time `gorm:"column:endTime" json:"endTime" form:"endTime"`
-	Address     string    `json:"address" form:"address"`
-	State       int       `json:"state" form:"state"`
-	Progress    int       `json:"progress" form:"progress"`
-	ExecuteTime time.Time `gorm:"column:executeTime" json:"executeTime" form:"executeTime"`
+	ID          int    `json:"id" form:"id"`
+	Name        string `json:"name" form:"name"`
+	Description string `json:"description" form:"description"`
+	MasterID    string `gorm:"column:masterID" json:"masterID" form:"masterID"`
+	StartTime   string `gorm:"column:startTime" json:"startTime" form:"startTime"`
+	EndTime     string `gorm:"column:endTime" json:"endTime" form:"endTime"`
+	Address     string `json:"address" form:"address"`
+	State       int    `json:"state" form:"state"`
+	Progress    int    `json:"progress" form:"progress"`
+	ExecuteTime string `gorm:"column:executeTime" json:"executeTime" form:"executeTime"`
 }
 
 type User struct {
@@ -64,13 +62,13 @@ type User struct {
 }
 
 type Vehicle struct {
-	ID             int       `json:"id" form:"id"`
-	Name           string    `json:"name" form:"name"`
-	Sign           string    `json:"sign" form:"sign"`
-	AddressID      int       `gorm:"column:addressID" json:"addressID" form:"addressID"`
-	State          int       `json:"state" form:"state"`
-	WorkState      int       `gorm:"column:workState" json:"workState" form:"workState"`
-	RegisterTime   time.Time `gorm:"column:registerTime" json:"registerTime" form:"registerTime"`
-	ActivationTime time.Time `gorm:"column:activationTime" json:"activationTime" form:"activationTime"`
-	TaskExecuteNum int       `gorm:"column:taskExecuteNum" json:"taskExecuteNum" form:"taskExecuteNum"`
+	ID             int    `json:"id" form:"id"`
+	Name           string `json:"name" form:"name"`
+	Sign           string `json:"sign" form:"sign"`
+	AddressID      int    `gorm:"column:addressID" json:"addressID" form:"addressID"`
+	State          int    `json:"state" form:"state"`
+	WorkState      int    `gorm:"column:workState" json:"workState" form:"workState"`
+	RegisterTime   string `gorm:"column:registerTime" json:"registerTime" form:"registerTime"`
+	ActivationTime string `gorm:"column:activationTime" json:"activationTime" form:"activationTime"`
+	TaskExecuteNum int    `gorm:"column:taskExecuteNum" json:"taskExecuteNum" form:"taskExecuteNum"`
 }
