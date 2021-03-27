@@ -2,6 +2,7 @@ package router
 
 import (
 	"CarNetBack/controller"
+	"CarNetBack/controller/basic"
 	"CarNetBack/middleware"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -22,94 +23,96 @@ func LoadRoutes(router *gin.Engine) {
 		})
 		address := v1.Group("/address")
 		{
-			address.GET("/get", controller.AddressGetOne)
-			address.GET("/first", controller.AddressGetFirst)
-			address.GET("/all", controller.AddressGetAll)
+			address.GET("/get", basic.AddressGetOne)
+			address.GET("/first", basic.AddressGetFirst)
+			address.GET("/all", basic.AddressGetAll)
 
-			address.POST("/new", controller.AddressNew)
-			address.DELETE("/delete", controller.AddressDelete)
-			address.PUT("/update", controller.AddressUpdate)
+			address.POST("/new", basic.AddressNew)
+			address.DELETE("/delete", basic.AddressDelete)
+			address.PUT("/update", basic.AddressUpdate)
 		}
 
 		job := v1.Group("/job")
 		{
-			job.GET("/get", controller.JobGetOne)
-			job.GET("/first", controller.JobGetFirst)
-			job.GET("/all", controller.JobGetAll)
+			job.GET("/get", basic.JobGetOne)
+			job.GET("/first", basic.JobGetFirst)
+			job.GET("/all", basic.JobGetAll)
 
-			job.POST("/new", controller.JobNew)
-			job.DELETE("/delete", controller.JobDelete)
-			job.PUT("/update", controller.JobUpdate)
+			job.POST("/new", basic.JobNew)
+			job.DELETE("/delete", basic.JobDelete)
+			job.PUT("/update", basic.JobUpdate)
 		}
 
 		log := v1.Group("/log")
 		{
-			log.GET("/get", controller.LogGetOne)
-			log.GET("/first", controller.LogGetFirst)
-			log.GET("/all", controller.LogGetAll)
-			log.POST("/new", controller.LogNew)
-			log.DELETE("/delete", controller.LogDelete)
-			log.PUT("/update", controller.LogUpdate)
+			log.GET("/get", basic.LogGetOne)
+			log.GET("/first", basic.LogGetFirst)
+			log.GET("/all", basic.LogGetAll)
+			log.POST("/new", basic.LogNew)
+			log.DELETE("/delete", basic.LogDelete)
+			log.PUT("/update", basic.LogUpdate)
 		}
 
 		permission := v1.Group("/permission")
 		{
-			permission.GET("/get", controller.PermissionGetOne)
-			permission.GET("/first", controller.PermissionGetFirst)
-			permission.GET("/all", controller.PermissionGetAll)
-			permission.POST("/new", controller.PermissionNew)
-			permission.DELETE("/delete", controller.PermissionDelete)
-			permission.PUT("/update", controller.PermissionUpdate)
+			permission.GET("/get", basic.PermissionGetOne)
+			permission.GET("/first", basic.PermissionGetFirst)
+			permission.GET("/all", basic.PermissionGetAll)
+			permission.POST("/new", basic.PermissionNew)
+			permission.DELETE("/delete", basic.PermissionDelete)
+			permission.PUT("/update", basic.PermissionUpdate)
 		}
 
 		setting := v1.Group("/setting")
 		{
-			setting.GET("/get", controller.SettingGetOne)
-			setting.GET("/first", controller.SettingGetFirst)
-			setting.GET("/all", controller.SettingGetAll)
-			setting.POST("/new", controller.SettingNew)
-			setting.DELETE("/delete", controller.SettingDelete)
-			setting.PUT("/update", controller.SettingUpdate)
+			setting.GET("/get", basic.SettingGetOne)
+			setting.GET("/first", basic.SettingGetFirst)
+			setting.GET("/all", basic.SettingGetAll)
+			setting.POST("/new", basic.SettingNew)
+			setting.DELETE("/delete", basic.SettingDelete)
+			setting.PUT("/update", basic.SettingUpdate)
 		}
 
 		staff := v1.Group("/staff")
 		{
-			staff.GET("/get", controller.StaffGetOne)
-			staff.GET("/first", controller.StaffGetFirst)
-			staff.GET("/all", controller.StaffGetAll)
-			staff.POST("/new", controller.StaffNew)
-			staff.DELETE("/delete", controller.StaffDelete)
-			staff.PUT("/update", controller.StaffUpdate)
+			staff.GET("/get", basic.StaffGetOne)
+			staff.GET("/first", basic.StaffGetFirst)
+			staff.GET("/all", basic.StaffGetAll)
+			staff.POST("/new", basic.StaffNew)
+			staff.DELETE("/delete", basic.StaffDelete)
+			staff.PUT("/update", basic.StaffUpdate)
 		}
 
 		task := v1.Group("/task")
 		{
-			task.GET("/get", controller.TaskGetOne)
-			task.GET("/first", controller.TaskGetFirst)
-			task.GET("/all", controller.TaskGetAll)
-			task.POST("/new", controller.TaskNew)
-			task.DELETE("/delete", controller.TaskDelete)
-			task.PUT("/update", controller.TaskUpdate)
+			task.GET("/get", basic.TaskGetOne)
+			task.GET("/first", basic.TaskGetFirst)
+			task.GET("/all", basic.TaskGetAll)
+			task.POST("/new", basic.TaskNew)
+			task.DELETE("/delete", basic.TaskDelete)
+			task.PUT("/update", basic.TaskUpdate)
 		}
 
 		user := v1.Group("/user")
 		{
-			user.GET("/get", controller.UserGetOne)
-			user.GET("/first", controller.UserGetFirst)
-			user.GET("/all", controller.UserGetAll)
-			user.POST("/new", controller.UserNew)
-			user.DELETE("/delete", controller.UserDelete)
-			user.PUT("/update", controller.UserUpdate)
+			user.GET("/get", basic.UserGetOne)
+			user.GET("/first", basic.UserGetFirst)
+			user.GET("/all", basic.UserGetAll)
+			user.POST("/new", basic.UserNew)
+			user.DELETE("/delete", basic.UserDelete)
+			user.PUT("/update", basic.UserUpdate)
 		}
 
 		vehicle := v1.Group("/vehicle")
 		{
-			vehicle.GET("/get", controller.VehicleGetOne)
-			vehicle.GET("/first", controller.VehicleGetFirst)
-			vehicle.GET("/all", controller.VehicleGetAll)
-			vehicle.POST("/new", controller.VehicleNew)
-			vehicle.DELETE("/delete", controller.VehicleDelete)
-			vehicle.PUT("/update", controller.VehicleUpdate)
+			vehicle.GET("/get", basic.VehicleGetOne)
+			vehicle.GET("/first", basic.VehicleGetFirst)
+			vehicle.GET("/all", basic.VehicleGetAll)
+			vehicle.POST("/new", basic.VehicleNew)
+			vehicle.DELETE("/delete", basic.VehicleDelete)
+			vehicle.PUT("/update", basic.VehicleUpdate)
+
+			vehicle.POST("/registerInGroup", basic.VehicleRegisterInList)
 		}
 
 	}
@@ -125,13 +128,13 @@ func LoadRoutes(router *gin.Engine) {
 
 		address := v2.Group("/address")
 		{
-			address.GET("/get", controller.TestAddressGetOne)
-			address.GET("/first", controller.TestAddressGetFirst)
-			address.GET("/all", controller.TestAddressGetAll)
+			address.GET("/get", basic.TestAddressGetOne)
+			address.GET("/first", basic.TestAddressGetFirst)
+			address.GET("/all", basic.TestAddressGetAll)
 
-			address.POST("/new", controller.TestAddressNew)
-			address.DELETE("/delete", controller.TestAddressDelete)
-			address.PUT("/update", controller.TestAddressUpdate)
+			address.POST("/new", basic.TestAddressNew)
+			address.DELETE("/delete", basic.TestAddressDelete)
+			address.PUT("/update", basic.TestAddressUpdate)
 		}
 
 	}

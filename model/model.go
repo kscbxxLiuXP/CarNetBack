@@ -65,6 +65,7 @@ type Vehicle struct {
 	ID             int    `json:"id" form:"id"`
 	Name           string `json:"name" form:"name"`
 	Sign           string `json:"sign" form:"sign"`
+	Identification string `json:"identification" form:"identification"`
 	AddressID      int    `gorm:"column:addressID" json:"addressID" form:"addressID"`
 	State          int    `json:"state" form:"state"`
 	WorkState      int    `gorm:"column:workState" json:"workState" form:"workState"`
@@ -72,4 +73,3 @@ type Vehicle struct {
 	ActivationTime string `gorm:"column:activationTime" json:"activationTime" form:"activationTime"`
 	TaskExecuteNum int    `gorm:"column:taskExecuteNum" json:"taskExecuteNum" form:"taskExecuteNum"`
 }
-

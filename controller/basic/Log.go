@@ -1,6 +1,7 @@
-package controller
+package basic
 
 import (
+	"CarNetBack/controller"
 	"CarNetBack/model"
 	"CarNetBack/service"
 	"github.com/gin-gonic/gin"
@@ -17,7 +18,7 @@ func LogGetOne(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetOne", gin.H{
+		controller.Success(c, "GetOne", gin.H{
 			"log": log,
 		})
 	}
@@ -33,7 +34,7 @@ func LogGetAll(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetAll", gin.H{
+		controller.Success(c, "GetAll", gin.H{
 			"log": loges,
 		})
 	}
@@ -48,7 +49,7 @@ func LogGetFirst(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "First", gin.H{
+		controller.Success(c, "First", gin.H{
 			"log": log,
 		})
 	}
@@ -65,7 +66,7 @@ func LogNew(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "New", gin.H{
 			"log": log,
 		})
 	}
@@ -82,7 +83,7 @@ func LogDelete(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "Delete", gin.H{
 			"ids": ids,
 		})
 	}
@@ -100,7 +101,7 @@ func LogUpdate(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "Update", gin.H{
+		controller.Success(c, "Update", gin.H{
 			"log": log,
 		})
 	}

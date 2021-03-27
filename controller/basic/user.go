@@ -1,6 +1,7 @@
-package controller
+package basic
 
 import (
+	"CarNetBack/controller"
 	"CarNetBack/model"
 	"CarNetBack/service"
 	"github.com/gin-gonic/gin"
@@ -17,7 +18,7 @@ func UserGetOne(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetOne", gin.H{
+		controller.Success(c, "GetOne", gin.H{
 			"user": user,
 		})
 	}
@@ -33,7 +34,7 @@ func UserGetAll(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetAll", gin.H{
+		controller.Success(c, "GetAll", gin.H{
 			"user": useres,
 		})
 	}
@@ -48,7 +49,7 @@ func UserGetFirst(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "First", gin.H{
+		controller.Success(c, "First", gin.H{
 			"user": user,
 		})
 	}
@@ -65,7 +66,7 @@ func UserNew(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "New", gin.H{
 			"user": user,
 		})
 	}
@@ -82,7 +83,7 @@ func UserDelete(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "Delete", gin.H{
+		controller.Success(c, "Delete", gin.H{
 			"usernames": ids,
 		})
 	}
@@ -100,7 +101,7 @@ func UserUpdate(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "Update", gin.H{
+		controller.Success(c, "Update", gin.H{
 			"user": user,
 		})
 	}

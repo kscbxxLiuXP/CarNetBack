@@ -1,7 +1,8 @@
 //本代码作为CRUD操作基本实例模板
-package controller
+package basic
 
 import (
+	"CarNetBack/controller"
 	"CarNetBack/model"
 	"CarNetBack/service"
 	"github.com/gin-gonic/gin"
@@ -18,7 +19,7 @@ func TestAddressGetOne(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetOne", gin.H{
+		controller.Success(c, "GetOne", gin.H{
 			"address": address,
 		})
 	}
@@ -34,7 +35,7 @@ func TestAddressGetAll(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetAll", gin.H{
+		controller.Success(c, "GetAll", gin.H{
 			"address": addresses,
 		})
 	}
@@ -49,7 +50,7 @@ func TestAddressGetFirst(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "First", gin.H{
+		controller.Success(c, "First", gin.H{
 			"address": address,
 		})
 	}
@@ -66,7 +67,7 @@ func TestAddressNew(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "New", gin.H{
 			"address": address,
 		})
 	}
@@ -83,7 +84,7 @@ func TestAddressDelete(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "Delete", gin.H{
 			"ids": ids,
 		})
 	}
@@ -101,7 +102,7 @@ func TestAddressUpdate(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "Update", gin.H{
+		controller.Success(c, "Update", gin.H{
 			"address": address,
 		})
 	}

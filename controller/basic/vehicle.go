@@ -1,8 +1,10 @@
-package controller
+package basic
 
 import (
+	"CarNetBack/controller"
 	"CarNetBack/model"
 	"CarNetBack/service"
+	"fmt"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,7 +19,7 @@ func VehicleGetOne(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetOne", gin.H{
+		controller.Success(c, "GetOne", gin.H{
 			"vehicle": vehicle,
 		})
 	}
@@ -33,7 +35,7 @@ func VehicleGetAll(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetAll", gin.H{
+		controller.Success(c, "GetAll", gin.H{
 			"vehicle": vehiclees,
 		})
 	}
@@ -48,7 +50,7 @@ func VehicleGetFirst(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "First", gin.H{
+		controller.Success(c, "First", gin.H{
 			"vehicle": vehicle,
 		})
 	}
@@ -65,7 +67,7 @@ func VehicleNew(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "New", gin.H{
 			"vehicle": vehicle,
 		})
 	}
@@ -82,7 +84,7 @@ func VehicleDelete(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "Delete", gin.H{
 			"ids": ids,
 		})
 	}
@@ -100,9 +102,17 @@ func VehicleUpdate(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "Update", gin.H{
+		controller.Success(c, "Update", gin.H{
 			"vehicle": vehicle,
 		})
 	}
 
+}
+
+//批量注册
+func VehicleRegisterInList(c *gin.Context) {
+	var vehicle model.Vehicle
+	c.ShouldBind(&vehicle)
+	fmt.Println(vehicle)
+	controller.Success(c, "success", gin.H{"da": "as"})
 }
