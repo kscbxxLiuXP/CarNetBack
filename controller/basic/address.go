@@ -1,6 +1,7 @@
-package controller
+package basic
 
 import (
+	"CarNetBack/controller"
 	"CarNetBack/model"
 	"CarNetBack/service"
 	"github.com/gin-gonic/gin"
@@ -17,7 +18,7 @@ func AddressGetOne(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetOne", gin.H{
+		controller.Success(c, "GetOne", gin.H{
 			"address": address,
 		})
 	}
@@ -33,7 +34,7 @@ func AddressGetAll(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "GetAll", gin.H{
+		controller.Success(c, "GetAll", gin.H{
 			"address": addresses,
 		})
 	}
@@ -48,7 +49,7 @@ func AddressGetFirst(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "First", gin.H{
+		controller.Success(c, "First", gin.H{
 			"address": address,
 		})
 	}
@@ -65,11 +66,13 @@ func AddressNew(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "New", gin.H{
 			"address": address,
 		})
 	}
 }
+
+
 
 //删除操作
 //无论是删除单个还是删除多个都用一个函数解决
@@ -82,7 +85,7 @@ func AddressDelete(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "New", gin.H{
+		controller.Success(c, "Delete", gin.H{
 			"ids": ids,
 		})
 	}
@@ -100,9 +103,12 @@ func AddressUpdate(c *gin.Context) {
 	if err != nil {
 
 	} else {
-		Success(c, "Update", gin.H{
+		controller.Success(c, "Update", gin.H{
 			"address": address,
 		})
 	}
 
 }
+
+
+
