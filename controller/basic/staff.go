@@ -4,7 +4,10 @@ import (
 	"CarNetBack/controller"
 	"CarNetBack/model"
 	"CarNetBack/service"
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"path"
+	"strings"
 )
 
 //查找操作：查找一个
@@ -103,6 +106,92 @@ func StaffUpdate(c *gin.Context) {
 	} else {
 		controller.Success(c, "Update", gin.H{
 			"staff": staff,
+		})
+	}
+
+}
+
+//检查注册合法性
+func StaffCheckForNew(c *gin.Context) {
+	type T struct {
+		ID       string `json:"id" form:"id"`
+		IDNumber string `gorm:"column:idNumber" json:"idNumber" form:"idNumber"`
+	}
+	var t T
+	var idEr, idNumEr = false, false
+	c.ShouldBind(&t)
+	//检查ID重复
+	var staff model.Staff
+	_ = service.StaffService.CheckForNewID(c, t.ID, &staff)
+	if staff != (model.Staff{}) { //staff非空，已存在
+		idEr = true
+	}
+	//清空staff，检查IDNumber重复
+	staff = model.Staff{}
+	_ = service.StaffService.CheckForNewIDNumber(c, t.IDNumber, &staff)
+	if staff != (model.Staff{}) { //staff非空，已存在
+		idNumEr = true
+	}
+	var err []string
+	if idNumEr {
+		err = append(err, "身份证号码已注册！")
+	}
+	if idEr {
+		err = append(err, "ID已注册！")
+	}
+
+	if len(err) == 0 {
+		//没有问题
+		controller.Success(c, "StaffCheckForNew", gin.H{
+			"staff": staff,
+		})
+	} else {
+		controller.Error(c, "错误", gin.H{
+			"error": err,
+		}, 1)
+	}
+}
+
+func StaffGetNextID(c *gin.Context) {
+
+	var t model.MaxStruct
+	err := service.StaffService.GetNextID(c, &t)
+	if err != nil {
+
+	} else {
+		controller.Success(c, "StaffGetNextID", gin.H{
+			"id": t.Max,
+		})
+	}
+
+}
+
+func StaffUploadPhoto(c *gin.Context) {
+
+	//上传文件
+	f, err := c.FormFile("file")
+	id, _ := c.GetPostForm("id")
+	//fmt.Println(id)
+	if err != nil {
+		controller.Success(c, "New", gin.H{
+			"msg": "fail",
+		})
+	} else {
+		//保存的文件
+		//filePath := fmt.Sprintf("./%s", f.Filename)
+		fileType := strings.Split(f.Filename, ".")[1]
+		dst := path.Join("./data/avatar/", id+"."+fileType)
+		fmt.Println(dst)
+
+		_ = c.SaveUploadedFile(f, dst)
+
+		var staff model.Staff
+		_ = service.StaffService.GetOne(c, id, &staff)
+		staff.Photoed = 1
+		_ = service.StaffService.Update(c, &staff)
+
+		controller.Success(c, "New", gin.H{
+			"msg": "success",
 		})
 	}
 

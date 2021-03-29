@@ -73,3 +73,7 @@ type Vehicle struct {
 	ActivationTime string `gorm:"column:activationTime" json:"activationTime" form:"activationTime"`
 	TaskExecuteNum int    `gorm:"column:taskExecuteNum" json:"taskExecuteNum" form:"taskExecuteNum"`
 }
+
+type MaxStruct struct {
+	Max int `json:"max"`
+}

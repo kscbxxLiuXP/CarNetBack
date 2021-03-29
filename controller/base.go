@@ -22,12 +22,12 @@ func Success(ctx *gin.Context, message string, data map[string]interface{}) {
 	setResponse(ctx, http.StatusOK, response)
 }
 
-func Error(ctx *gin.Context, message string, code constant.ResponseCode) {
+func Error(ctx *gin.Context, message string, data map[string]interface{}, code constant.ResponseCode) {
 
 	response := response{
 		Code:    code,
 		Message: message,
-		Data:    gin.H{},
+		Data:    data,
 	}
 	setResponse(ctx, http.StatusOK, response)
 }

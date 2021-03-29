@@ -1,4 +1,5 @@
 package service
+
 import (
 	"CarNetBack/model"
 	"github.com/gin-gonic/gin"
@@ -33,5 +34,19 @@ func (us staffService) Delete(ctx *gin.Context, ids []string) error {
 
 func (us staffService) Update(ctx *gin.Context, staff *model.Staff) error {
 	return db.Save(&staff).Error
+
+}
+func (us staffService) CheckForNewID(ctx *gin.Context, id string, staff *model.Staff) error {
+	return db.Where("id = ?", id).Find(&staff).Error
+
+}
+
+func (us staffService) CheckForNewIDNumber(ctx *gin.Context, idNumber string, staff *model.Staff) error {
+	return db.Where("idNumber = ?", idNumber).Find(&staff).Error
+
+}
+
+func (us staffService) GetNextID(ctx *gin.Context, t *model.MaxStruct) error {
+	return db.Raw("SELECT MAX(id)+1 AS max FROM staff").Scan(&t).Error
 
 }
