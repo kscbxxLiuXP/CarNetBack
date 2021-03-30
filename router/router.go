@@ -85,6 +85,7 @@ func LoadRoutes(router *gin.Engine) {
 			staff.GET("/checkForNew", basic.StaffCheckForNew)
 			staff.GET("/getNextID", basic.StaffGetNextID)
 			staff.POST("/uploadPhoto", basic.StaffUploadPhoto)
+			staff.GET("/filterByCondition", basic.StaffFilterByCondition)
 		}
 
 		task := v1.Group("/task")

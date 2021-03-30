@@ -50,3 +50,7 @@ func (us staffService) GetNextID(ctx *gin.Context, t *model.MaxStruct) error {
 	return db.Raw("SELECT MAX(id)+1 AS max FROM staff").Scan(&t).Error
 
 }
+
+func (us staffService) FilterByCondition(ctx *gin.Context, id string, name string, idNumber string, staff *[]model.Staff) error {
+	return db.Where("id like '%" + id + "%'").Where("idNumber like '%" + idNumber + "%'").Where("name like '%" + name + "%'").Find(&staff).Error
+}
