@@ -96,6 +96,8 @@ func LoadRoutes(router *gin.Engine) {
 			task.POST("/new", basic.TaskNew)
 			task.DELETE("/delete", basic.TaskDelete)
 			task.PUT("/update", basic.TaskUpdate)
+
+			task.GET("/getNextID", basic.TaskGetNextID)
 		}
 
 		user := v1.Group("/user")

@@ -47,10 +47,10 @@ type Task struct {
 	ID          int    `json:"id" form:"id"`
 	Name        string `json:"name" form:"name"`
 	Description string `json:"description" form:"description"`
-	MasterID    string `gorm:"column:masterID" json:"masterID" form:"masterID"`
+	MasterID    int    `gorm:"column:masterID" json:"masterID" form:"masterID"`
 	StartTime   string `gorm:"column:startTime" json:"startTime" form:"startTime"`
 	EndTime     string `gorm:"column:endTime" json:"endTime" form:"endTime"`
-	Address     string `json:"address" form:"address"`
+	Address     int `json:"address" form:"address"`
 	State       int    `json:"state" form:"state"`
 	Progress    int    `json:"progress" form:"progress"`
 	ExecuteTime string `gorm:"column:executeTime" json:"executeTime" form:"executeTime"`

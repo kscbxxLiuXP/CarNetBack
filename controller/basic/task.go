@@ -4,6 +4,7 @@ import (
 	"CarNetBack/controller"
 	"CarNetBack/model"
 	"CarNetBack/service"
+	"fmt"
 	"github.com/gin-gonic/gin"
 )
 
@@ -62,6 +63,7 @@ func TaskGetFirst(c *gin.Context) {
 func TaskNew(c *gin.Context) {
 	var task model.Task
 	c.ShouldBind(&task)
+	fmt.Println(task)
 	err := service.TaskService.New(c, &task)
 	if err != nil {
 
@@ -106,4 +108,16 @@ func TaskUpdate(c *gin.Context) {
 		})
 	}
 
+}
+
+func TaskGetNextID(c *gin.Context){
+	var t model.MaxStruct
+	err := service.TaskService.GetNextID(c, &t)
+	if err != nil {
+
+	} else {
+		controller.Success(c, "TaskGetNextID", gin.H{
+			"id": t.Max,
+		})
+	}
 }

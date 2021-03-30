@@ -1,4 +1,5 @@
 package service
+
 import (
 	"CarNetBack/model"
 	"github.com/gin-gonic/gin"
@@ -33,5 +34,10 @@ func (us taskService) Delete(ctx *gin.Context, ids []string) error {
 
 func (us taskService) Update(ctx *gin.Context, task *model.Task) error {
 	return db.Save(&task).Error
+
+}
+
+func (us taskService) GetNextID(ctx *gin.Context, t *model.MaxStruct) error {
+	return db.Raw("SELECT MAX(id)+1 AS max FROM task").Scan(&t).Error
 
 }
