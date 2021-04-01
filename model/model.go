@@ -7,10 +7,14 @@ type Address struct {
 }
 
 type Job struct {
-	ID        int `json:"id" form:"id"`
-	VehicleID int `gorm:"column:vehicleID" json:"vehicleID" form:"vehicleID"`
-	StaffID   int `gorm:"column:staffID" json:"staffID" form:"staffID"`
-	TaskID    int `gorm:"column:taskID" json:"taskID" form:"taskID"`
+	ID        int    `json:"id" form:"id"`
+	VehicleID int    `gorm:"column:vehicleID" json:"vehicleID" form:"vehicleID"`
+	StaffID   int    `gorm:"column:staffID" json:"staffID" form:"staffID"`
+	Step      int    `gorm:"column:step" json:"step" form:"step"`
+	Step1Time string `gorm:"column:step1Time" json:"step1Time" form:"step1Time"`
+	Step2Time string `gorm:"column:step2Time" json:"step2Time" form:"step2Time"`
+	Step3Time string `gorm:"column:step3Time" json:"step3Time" form:"step3Time"`
+	Step4Time string `gorm:"column:step4Time" json:"step4Time" form:"step4Time"`
 }
 
 type Log struct {
@@ -47,13 +51,9 @@ type Task struct {
 	ID          int    `json:"id" form:"id"`
 	Name        string `json:"name" form:"name"`
 	Description string `json:"description" form:"description"`
-	MasterID    int    `gorm:"column:masterID" json:"masterID" form:"masterID"`
 	StartTime   string `gorm:"column:startTime" json:"startTime" form:"startTime"`
 	EndTime     string `gorm:"column:endTime" json:"endTime" form:"endTime"`
-	Address     int `json:"address" form:"address"`
-	State       int    `json:"state" form:"state"`
-	Progress    int    `json:"progress" form:"progress"`
-	ExecuteTime string `gorm:"column:executeTime" json:"executeTime" form:"executeTime"`
+	Address     int    `json:"address" form:"address"`
 }
 
 type User struct {

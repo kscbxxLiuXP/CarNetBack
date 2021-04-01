@@ -6,6 +6,7 @@ import (
 	"CarNetBack/service"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"time"
 )
 
 //查找操作：查找一个
@@ -65,6 +66,16 @@ func TaskNew(c *gin.Context) {
 	c.ShouldBind(&task)
 	fmt.Println(task)
 	err := service.TaskService.New(c, &task)
+	var job model.Job
+	job.ID = task.ID
+	job.StaffID = -1
+	job.Step = 1
+	job.VehicleID = -1
+	job.Step1Time = time.Now().Format("2006-01-02 15:04:05")
+	job.Step2Time = time.Now().Format("2006-01-02 15:04:05")
+	job.Step3Time = time.Now().Format("2006-01-02 15:04:05")
+	job.Step4Time = time.Now().Format("2006-01-02 15:04:05")
+	service.JobService.New(c, &job)
 	if err != nil {
 
 	} else {
@@ -110,7 +121,7 @@ func TaskUpdate(c *gin.Context) {
 
 }
 
-func TaskGetNextID(c *gin.Context){
+func TaskGetNextID(c *gin.Context) {
 	var t model.MaxStruct
 	err := service.TaskService.GetNextID(c, &t)
 	if err != nil {
