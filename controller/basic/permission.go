@@ -5,6 +5,7 @@ import (
 	"CarNetBack/model"
 	"CarNetBack/service"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
 //查找操作：查找一个
@@ -62,14 +63,20 @@ func PermissionGetFirst(c *gin.Context) {
 func PermissionNew(c *gin.Context) {
 	var permission model.Permission
 	c.ShouldBind(&permission)
-	err := service.PermissionService.New(c, &permission)
-	if err != nil {
+	//检查权限是否已经存在
+	var t model.CountStruct
+	staffID := strconv.Itoa(permission.StaffID)
+	vehicleID := strconv.Itoa(permission.VehicleID)
+	service.PermissionService.HasPermission(c, staffID, vehicleID, &t)
 
-	} else {
-		controller.Success(c, "New", gin.H{
-			"permission": permission,
-		})
+	if t.Count <= 0 {
+		service.PermissionService.New(c, &permission)
 	}
+
+	controller.Success(c, "New", gin.H{
+		"permission": permission,
+	})
+
 }
 
 //删除操作
@@ -106,4 +113,49 @@ func PermissionUpdate(c *gin.Context) {
 		})
 	}
 
+}
+
+func PermissionHasPermission(c *gin.Context) {
+	var t model.CountStruct
+	staffID := c.Query("staffID")
+	vehicleID := c.Query("vehicleID")
+	err := service.PermissionService.HasPermission(c, staffID, vehicleID, &t)
+	var a int
+	if t.Count > 0 {
+		a = 1
+	} else {
+		a = 0
+	}
+	if err != nil {
+
+	} else {
+		controller.Success(c, "HasPermission", gin.H{
+			"permission": a,
+		})
+	}
+}
+
+func PermissionGetByStaffID(c *gin.Context) {
+	var permission []model.Permission
+	staffID := c.Query("staffID")
+	err := service.PermissionService.GetByStaffID(c, staffID, &permission)
+	if err != nil {
+
+	} else {
+		controller.Success(c, "GetByStaffID", gin.H{
+			"permission": permission,
+		})
+	}
+}
+func PermissionGetByVehicleID(c *gin.Context) {
+	var permission []model.Permission
+	vehicleID := c.Query("vehicleID")
+	err := service.PermissionService.GetByStaffID(c, vehicleID, &permission)
+	if err != nil {
+
+	} else {
+		controller.Success(c, "GetByVehicleID", gin.H{
+			"permission": permission,
+		})
+	}
 }

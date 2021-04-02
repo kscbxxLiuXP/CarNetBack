@@ -61,6 +61,10 @@ func LoadRoutes(router *gin.Engine) {
 			permission.POST("/new", basic.PermissionNew)
 			permission.DELETE("/delete", basic.PermissionDelete)
 			permission.PUT("/update", basic.PermissionUpdate)
+
+			permission.GET("/hasPermission", basic.PermissionHasPermission)
+			permission.GET("/getByStaffID", basic.PermissionGetByStaffID)
+			permission.GET("/getByVehicleID", basic.PermissionGetByVehicleID)
 		}
 
 		setting := v1.Group("/setting")
@@ -86,6 +90,7 @@ func LoadRoutes(router *gin.Engine) {
 			staff.GET("/getNextID", basic.StaffGetNextID)
 			staff.POST("/uploadPhoto", basic.StaffUploadPhoto)
 			staff.GET("/filterByCondition", basic.StaffFilterByCondition)
+			staff.GET("/avatar", basic.StaffAvatar)
 		}
 
 		task := v1.Group("/task")

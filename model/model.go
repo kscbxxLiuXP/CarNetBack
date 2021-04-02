@@ -77,3 +77,7 @@ type Vehicle struct {
 type MaxStruct struct {
 	Max int `json:"max"`
 }
+
+type CountStruct struct {
+	Count int `json:"count"`
+}

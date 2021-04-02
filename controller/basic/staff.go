@@ -215,3 +215,10 @@ func StaffFilterByCondition(c *gin.Context) {
 		})
 	}
 }
+
+func StaffAvatar(c *gin.Context) {
+	id := c.Query("id")
+	var p = ""
+	p = path.Join("./data/avatar/", id+".png")
+	c.File(p)
+}
