@@ -197,10 +197,7 @@ func StaffUploadPhoto(c *gin.Context) {
 
 }
 
-//查找操作：查找一个
-//通过GET请求传递param
-//前端请求：/v2/staff/get?id=1
-//后端通过c.Query("id")获取参数
+
 func StaffFilterByCondition(c *gin.Context) {
 	var staff []model.Staff
 	id := c.DefaultQuery("id", "")

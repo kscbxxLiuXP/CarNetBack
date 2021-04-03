@@ -36,3 +36,10 @@ func (us jobService) Update(ctx *gin.Context, job *model.Job) error {
 	return db.Save(&job).Error
 
 }
+
+func (us jobService) CurrentJobByVehicleID(ctx *gin.Context, vehicleID string, job *model.Job) error {
+	return db.Where("vehicleID = ?", vehicleID).Where("step = 3").Find(&job).Error
+}
+func (us jobService) LastJobByVehicleID(ctx *gin.Context, vehicleID string, job *model.Job) error {
+	return db.Where("vehicleID = ?", vehicleID).Where("step = 4").Order("step4Time").Find(&job).Error
+}

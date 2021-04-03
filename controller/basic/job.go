@@ -107,3 +107,28 @@ func JobUpdate(c *gin.Context) {
 	}
 
 }
+
+func JobCurrentJobByVehicleID(c *gin.Context) {
+	var job model.Job
+	vehicleID := c.Query("vehicleID")
+	err := service.JobService.CurrentJobByVehicleID(c, vehicleID, &job)
+	if err != nil {
+		controller.Error(c, "error", gin.H{}, 1)
+	} else {
+		controller.Success(c, "GetOne", gin.H{
+			"job": job,
+		})
+	}
+}
+func JobLastJobByVehicleID(c *gin.Context) {
+	var job model.Job
+	vehicleID := c.Query("vehicleID")
+	err := service.JobService.LastJobByVehicleID(c, vehicleID, &job)
+	if err != nil {
+		controller.Error(c, "error", gin.H{}, 1)
+	} else {
+		controller.Success(c, "GetOne", gin.H{
+			"job": job,
+		})
+	}
+}

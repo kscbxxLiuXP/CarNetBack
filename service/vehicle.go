@@ -1,4 +1,5 @@
 package service
+
 import (
 	"CarNetBack/model"
 	"github.com/gin-gonic/gin"
@@ -34,4 +35,7 @@ func (us vehicleService) Delete(ctx *gin.Context, ids []string) error {
 func (us vehicleService) Update(ctx *gin.Context, vehicle *model.Vehicle) error {
 	return db.Save(&vehicle).Error
 
+}
+func (us vehicleService) FilterByCondition(ctx *gin.Context, address string, name string, state string, vehicle *[]model.Vehicle) error {
+	return db.Where("addressID like '%" + address + "%'").Where("state like '%" + state + "%'").Where("name like '%" + name + "%'").Find(&vehicle).Error
 }

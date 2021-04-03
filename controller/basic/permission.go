@@ -150,7 +150,7 @@ func PermissionGetByStaffID(c *gin.Context) {
 func PermissionGetByVehicleID(c *gin.Context) {
 	var permission []model.Permission
 	vehicleID := c.Query("vehicleID")
-	err := service.PermissionService.GetByStaffID(c, vehicleID, &permission)
+	err := service.PermissionService.GetByVehicle(c, vehicleID, &permission)
 	if err != nil {
 
 	} else {

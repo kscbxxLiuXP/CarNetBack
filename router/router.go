@@ -41,6 +41,9 @@ func LoadRoutes(router *gin.Engine) {
 			job.POST("/new", basic.JobNew)
 			job.DELETE("/delete", basic.JobDelete)
 			job.PUT("/update", basic.JobUpdate)
+			job.GET("/currentJobByVehicleID", basic.JobCurrentJobByVehicleID)
+			job.GET("/lastJobByVehicleID", basic.JobLastJobByVehicleID)
+
 		}
 
 		log := v1.Group("/log")
@@ -125,6 +128,8 @@ func LoadRoutes(router *gin.Engine) {
 			vehicle.PUT("/update", basic.VehicleUpdate)
 
 			vehicle.POST("/registerInGroup", basic.VehicleRegisterInList)
+			vehicle.GET("/filterByCondition", basic.VehicleFilterByCondition)
+
 		}
 
 	}

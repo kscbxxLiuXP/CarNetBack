@@ -116,3 +116,18 @@ func VehicleRegisterInList(c *gin.Context) {
 	fmt.Println(vehicle)
 	controller.Success(c, "success", gin.H{"da": "as"})
 }
+
+func VehicleFilterByCondition(c *gin.Context) {
+	var vehicle []model.Vehicle
+	addressID := c.DefaultQuery("address", "")
+	name := c.DefaultQuery("name", "")
+	state := c.DefaultQuery("state", "")
+	err := service.VehicleService.FilterByCondition(c, addressID, name, state, &vehicle)
+	if err != nil {
+
+	} else {
+		controller.Success(c, "GetOne", gin.H{
+			"vehicle": vehicle,
+		})
+	}
+}
