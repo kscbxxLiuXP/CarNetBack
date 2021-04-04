@@ -98,6 +98,7 @@ func VehicleDelete(c *gin.Context) {
 func VehicleUpdate(c *gin.Context) {
 	var vehicle model.Vehicle
 	c.ShouldBind(&vehicle)
+
 	err := service.VehicleService.Update(c, &vehicle)
 	if err != nil {
 

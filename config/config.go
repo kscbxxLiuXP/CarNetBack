@@ -11,9 +11,9 @@ type APPconfig struct {
 }
 
 func LoadConfig() {
-	APP.DB_Password = "090312"
-	APP.DB_Username = "root"
-	APP.DB_IP = "127.0.0.1"
+	APP.DB_Password = "Neu12345"
+	APP.DB_Username = "neu"
+	APP.DB_IP = "rm-2zey0tuwg85789b4zbo.mysql.rds.aliyuncs.com"
 	APP.DB_Port = "3306"
 	APP.DB_Name = "carnet"
 

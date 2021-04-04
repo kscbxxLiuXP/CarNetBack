@@ -45,6 +45,7 @@ type Staff struct {
 	Photoed   int    `json:"photoed" form:"photoed"`
 	State     int    `json:"state" form:"state"`
 	WorkState int    `gorm:"column:workState" json:"workState" form:"workState"`
+	TaskNum   int    `gorm:"column:taskNum" json:"taskNum" form:"taskNum"`
 }
 
 type Task struct {
@@ -72,6 +73,7 @@ type Vehicle struct {
 	RegisterTime   string `gorm:"column:registerTime" json:"registerTime" form:"registerTime"`
 	ActivationTime string `gorm:"column:activationTime" json:"activationTime" form:"activationTime"`
 	TaskExecuteNum int    `gorm:"column:taskExecuteNum" json:"taskExecuteNum" form:"taskExecuteNum"`
+	WorkStaffID    int    `gorm:"column:workStaffID" json:"workStaffID" form:"workStaffID"`
 }
 
 type MaxStruct struct {
